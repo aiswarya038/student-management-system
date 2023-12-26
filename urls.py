@@ -1,15 +1,12 @@
-from django.contrib import admin
 from django.urls import path
-from sms import views
-from sms.models import Student,Teacher
+from stud import views
 
 urlpatterns = [
-    path('log',views.login,name="login"),
-    path('stud',views.stud,name="stud"),
-    path('teach',views.teach,name="teach"),
+    # path('admin/', admin.site.urls),
+    path('log',views.login1,name="login"),
+    path('studreg',views.studreg,name="login"),
+    path('teachreg',views.teachreg,name="teachreg")
 
-    
 
 
 ]
-

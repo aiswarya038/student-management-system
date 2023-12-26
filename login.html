@@ -6,10 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
-        USERNAME:<input type="text" name="=user"><br>
-        PASSWORD:<input type="text" name="=pass"><br>
-        <input type="submit" value="login">
+    <form action="log" method="POST">
+        {% csrf_token %}
+        USERNAME:<input type="text" name="uname"><br><br>
+        PASSWORD:<input type="password" name="pass"><br><br>
+        <button type="submit">LOGIN</button>
 
     </form>
 </body>

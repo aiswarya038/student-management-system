@@ -6,20 +6,22 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="">
-        <h1>TEACHER REGISTRATION FORM</h1>
+    <form action="teachreg" method="POST">
+        {% csrf_token %}
+        <h2>TEACHER REGISTRAION FORM</h2>
         FIRSTNAME:<input type="text" name="fn"><br>
         LASTNAME:<input type="text" name="ln"><br>
-        AGE:<input type="text" name="ag"><br>
-        EMAIL:<inpout type="email" name="em"><br></inpout>
-        ADDRESS:<textarea></textarea><br>
+        AGE:<input type="number" name="ag"><br>
+        EMAIL:<input type="email" name="em"><br>
+        ADDRESS:<textarea name="add"></textarea><br>
         PLACE:<input type="text" name="pl"><br>
-        PHONE:<input type="text" name="ph"><br>
-        SUBJECT:<input type="text" name="sub"><br>
+        PHONE:<input type="tel" name="ph"><br>
+        GENDER:<input type="radio"name=gender value="male">male
+               <input type="radio"name=gender value="female">female
+        DEPARTMENT:<input type="text" name="dept"><br>
         USERNAME:<input type="text" name="user"><br>
-        PASSWORD:<input type="text" name="pass"><br><br>
-        <input type="submit" value="REGISTER">
-
+        PASSWORD:<input type="password" name="pass"><br>
+        <button type="submit">REGISTER</button>
     </form>
 </body>
 </html>
