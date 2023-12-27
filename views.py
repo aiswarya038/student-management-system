@@ -9,18 +9,12 @@ def login1(request):
         u=request.POST['uname']
         p=request.POST['pass']
         user=authenticate(request,username=u,password=p)
-    #     user=authenticate(
-    #     username=request.POST['uname'],
-    #     password=request.POST['pass']
-        
-    #     if user is not None:
-    #         login(request,user)
         if user is not None and user.is_superuser==1:
             login(request,user)
             # return HttpResponse("ok")
             return render(request,"adminhome.html")
         
-        elif student.objects.filter(username=u,password=p).exit():
+        elif student.objects.filter(username=u,password=p):
             sts=student.objects.filter(username=u,password=p)
             for i in sts:
                 if i.value==1:
@@ -28,6 +22,7 @@ def login1(request):
                     return render("studenthome.html")
                 else:
                     return redirect("logins")
+                
         elif teacher.objects.filter(username=u,password=p):
             teach=teacher.objects.filter(username=u,password=p)
             for i in teach:
@@ -57,6 +52,10 @@ def studreg(request):
     else:      
         return render(request,"student.html")
 
+def studview(request):
+    a=student.objects.all()
+    return render(request,"viewstudent.html",{"a1":a})
+
 
 def teachreg(request):
     if request.method=='POST':
@@ -76,3 +75,10 @@ def teachreg(request):
         return HttpResponse("success")
     else:
         return render(request,"teacher.html")
+    
+def teachview(request):
+    a=teacher.objects.all()
+    return render(request,"viewteacher.html",{"a1":a})
+
+def approve(request):
+    a=student.objects.all()
