@@ -19,15 +19,15 @@ def login1(request):
             for i in sts:
                 if i.value==1:
                     request.session['stud_id']=i.id
-                    return render("studenthome.html")
+                    return render(request,"studenthome.html")
                 else:
-                    return redirect("logins")
+                    return redirect("login")
                 
         elif teacher.objects.filter(username=u,password=p):
             teach=teacher.objects.filter(username=u,password=p)
             for i in teach:
                 request.session['teach_id']=i.id
-                return render("teacherhome.html")
+                return render(request,"teacherhome.html")
         return HttpResponse("success")
     else:
         return render(request,'login.html')
@@ -50,12 +50,18 @@ def studreg(request):
         x.save()
         return HttpResponse("registerd")
     else:      
-        return render(request,"student.html")
+        return render(request,"studreg.html")
 
 def studview(request):
     a=student.objects.all()
     return render(request,"viewstudent.html",{"a1":a})
 
+def approve(request):
+    a=student.objects.filter(value=0)
+    return render(request,"approve.html",{"a1":a})
+def one(request,sid):
+    a=student.objects.filter(id=sid).update(value=1)
+    return redirect(approve)
 
 def teachreg(request):
     if request.method=='POST':
@@ -74,11 +80,14 @@ def teachreg(request):
         x.save()
         return HttpResponse("success")
     else:
-        return render(request,"teacher.html")
+        return render(request,"teachreg.html")
     
 def teachview(request):
     a=teacher.objects.all()
     return render(request,"viewteacher.html",{"a1":a})
 
-def approve(request):
-    a=student.objects.all()
+def teachprofile(request):
+    a= request.session['teach_id']
+    profile=teacher.objects.filter(id=a)
+    return render(request,"teacherprofile.html",{"a1":profile})
+

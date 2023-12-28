@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="teachreg" method="POST">
+        {% csrf_token %}
+        <h2>TEACHER REGISTRAION FORM</h2>
+        FIRSTNAME:<input type="text" name="fn"><br>
+        LASTNAME:<input type="text" name="ln"><br>
+        AGE:<input type="number" name="ag"><br>
+        EMAIL:<input type="email" name="em"><br>
+        ADDRESS:<textarea name="add"></textarea><br>
+        PLACE:<input type="text" name="pl"><br>
+        PHONE:<input type="tel" name="ph"><br>
+        GENDER:<input type="radio"name=gender value="male">male
+               <input type="radio"name=gender value="female">female
+        DEPARTMENT:<input type="text" name="dept"><br>
+        USERNAME:<input type="text" name="user"><br>
+        PASSWORD:<input type="password" name="pass"><br>
+        <button type="submit">REGISTER</button>
+    </form>
+</body>
+</html>

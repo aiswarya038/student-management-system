@@ -6,8 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    <table>
-        <tr>
+    <form>
+        <table>
+            <tr>
             <th>FIRSTNAME</th>
             <th>LASTNAME</th>
             <th>AGE</th>
@@ -16,9 +17,8 @@
             <th>ADDRESS</th>
             <th>GENDER</th>
             <th>PLACE</th>
-            <th>DEPARTMENT</th>
+            <th>COURSE</th>
         </tr>
-       
         {% for i in a1 %}
         <tr>
             <td>{{i.FirstName}}</td>
@@ -29,10 +29,12 @@
             <td>{{i.address}}</td>
             <td>{{i.gender}}</td>
             <td>{{i.place}}</td>
-            <td>{{i.department}}</td>
-        </tr>
+            <td>{{i.course}}</td>
+            <td><a href="approve/{{i.id}}">APPROVE</a></td>
         {% endfor %}
     
-    </table>
+        </tr>
+        </table> 
+    </form>
 </body>
 </html>

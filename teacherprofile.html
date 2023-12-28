@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        {% csrf_token %}
+
+        {% for i in a1 %}
+        FIRSTNAME:<input type="text" value="{{i.FirstName}}" readonly><br>
+        LASTNAME:<input type="text" value="{{i.LastName}}" readonly><br>
+        AGE:<input type="number" value="{{i.age}}" readonly><br>
+        EMAIL:<input type="email" value="{{i.email}}" readonly><br>
+        ADDRESS:<textarea readonly>{{i.address}}</textarea><br>
+        PLACE:<input type="text" value="{{i.place}}" readonly><br>
+        PHONE:<input type="tel"  value="{{i.phone}}" readonly><br>
+        GENDER:<input type="radio"name=gender value="male">male
+               <input type="radio"name=gender value="female">female<br>
+
+        DEPARTMENT:<input type="text"  value="{{i.department}}" readonly><br>
+        USERNAME:<input type="text"  value="{{i.username}}" readonly><br>
+        PASSWORD:<input type="password"  value="{{i.password}}" readonly><br>
+        {% endfor %}
+
+    </form>
+</body>
+</html>
