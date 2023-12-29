@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth import authenticate,login
 from stud.models import student,teacher
+from django.utils.datastructures import MultiValueDictKeyError
 
 
 # Create your views here.
@@ -56,12 +57,25 @@ def studview(request):
     a=student.objects.all()
     return render(request,"viewstudent.html",{"a1":a})
 
+def delstudent(request,did):
+    a=student.objects.filter(id=did)
+    a.delete()
+    return redirect(studview)
+
+
+def studentprofile(request):
+    a= request.session['stud_id']
+    profile=teacher.objects.filter(id=a)
+    return render(request,"studentprofile.html",{"a1":profile})
+
 def approve(request):
     a=student.objects.filter(value=0)
     return render(request,"approve.html",{"a1":a})
 def one(request,sid):
     a=student.objects.filter(id=sid).update(value=1)
     return redirect(approve)
+
+
 
 def teachreg(request):
     if request.method=='POST':
@@ -85,6 +99,38 @@ def teachreg(request):
 def teachview(request):
     a=teacher.objects.all()
     return render(request,"viewteacher.html",{"a1":a})
+
+def delteacher(request,did):
+    a=teacher.objects.filter(id=did)
+    a.delete()
+    return redirect(teachview)
+
+def teachviewstudent(request):
+    a=student.objects.all()
+    return render(request,"teachviewstudent.html",{"a1":a})
+   
+def update_teacher(request,eid):
+   if request.method=='POST':
+        f=request.POST['fn']
+        l=request.POST['ln']
+        a=request.POST['ag']
+        e=request.POST['em']
+        ad=request.POST['add']
+        ph=request.POST['ph']
+        pl=request.POST['pl']
+        u=request.POST['user']
+        p=request.POST['pass']
+        try:
+            g=request.POST['gender']
+        except MultiValueDictKeyError:
+            g='female'
+        d=request.POST['dept']
+        x=teacher.objects.filter(id=eid).update(FirstName=f,LastName=l,age=a,email=e,phone=ph,place=pl,address=ad,username=u,password=p,gender=g,department=d)
+        return redirect(teachview)
+   else:
+        a=teacher.objects.get(id=eid)
+        return render(request,"edit_teacher.html",{"a1":a})
+
 
 def teachprofile(request):
     a= request.session['teach_id']

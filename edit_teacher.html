@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/update/{{a1.id}}" method="POST">
+      {% csrf_token %}
+        FIRSTNAME:<input type="text" value="{{a1.FirstName}}" name="fn"><br>
+        LASTNAME:<input type="text" value="{{a1.LastName}}" name="ln"><br>
+        AGE:<input type="number" value="{{a1.age}}" name="ag"><br>
+        EMAIL:<input type="email" value="{{a1.email}}" name="em"><br>
+        ADDRESS:<textarea name="add">{{i.address}}</textarea><br>
+        PLACE:<input type="text" value="{{a1.place}}" name="pl"><br>
+        PHONE:<input type="tel"  value="{{a1.phone}}" name="ph"><br>
+        GENDER:<input type="radio"name=gender value="male">male
+               <input type="radio"name=gender value="female">female<br>
+
+        DEPARTMENT:<input type="text"  value="{{a1.department}}" name="dept"><br>
+        USERNAME:<input type="text"  value="{{a1.username}}" name="user"><br>
+        PASSWORD:<input type="password"  value="{{a1.password}}" name="pass"><br>
+        <button type="submit">update</button>
+    
+    </form>
+</body>
+</html>
