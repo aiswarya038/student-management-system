@@ -4,10 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    max-width: 800px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+a {
+    text-decoration: none;
+    color:green;
+}
+#one{
+    text-decoration: none;
+    color:red;
+    font-weight: bold;
+
+}
+#one.hover{
+    text-decoration: underline;
+    color:darkred;
+}
+a:hover {
+    text-decoration: underline;
+    color:lightgreen;
+}
+</style>
 </head>
 <body>
     <table>
         <tr>
+        <th>ID</th>
         <th>FIRSTNAME</th>
         <th>LASTNAME</th>
         <th>AGE</th>
@@ -20,6 +78,7 @@
     </tr>
     {% for i in a1 %}
     <tr>
+        <td>{{i.id}}</td>
         <td>{{i.FirstName}}</td>
         <td>{{i.LastName}}</td>
         <td>{{i.age}}</td>
@@ -29,6 +88,9 @@
         <td>{{i.gender}}</td>
         <td>{{i.place}}</td>
         <td>{{i.course}}</td>
+        <td><a id="one" href="delete/{{i.id}}">DELETE</a></td>
+        <td><a href="edit/{{i.id}}">EDIT</a></td>
+
     {% endfor %}
 
     </tr>

@@ -33,13 +33,11 @@ th, td {
 
 th {
     background-color: #f2f2f2;
-    color: black;
-    font-weight: bold;
 }
 
 a {
     text-decoration: none;
-    color:green;
+    color: #0066cc;
     display: block;
     text-align: center;
 }
@@ -51,38 +49,33 @@ a:hover {
 </style>
 </head>
 <body>
-    <h1>MY PROFILE</h1>
-    <table>
+    <body>
+        <table>
+            <tr>
+            <th>ID</th>
+            <th>FIRSTNAME</th>
+            <th>LASTNAME</th>
+            <th>AGE</th>
+            <th>EMAIL</th>
+            <th>PHONE</th>
+            <th>ADDRESS</th>
+            <th>GENDER</th>
+            <th>PLACE</th>
+            <th>DEPARTMENT</th>
+        </tr>
+        {% for i in a1 %}
         <tr>
-        <th>ID</th>
-        <th>FIRSTNAME</th>
-        <th>LASTNAME</th>
-        <th>AGE</th>
-        <th>EMAIL</th>
-        <th>PHONE</th>
-        <th>ADDRESS</th>
-        <th>GENDER</th>
-        <th>PLACE</th>
-        <th>COURSE</th>
-    </tr>
-    {% for i in a1 %}
-    <tr>
-        <td>{{i.id}}</td>
-        <td>{{i.FirstName}}</td>
-        <td>{{i.LastName}}</td>
-        <td>{{i.age}}</td>
-        <td>{{i.email}}</td>
-        <td>{{i.phone}}</td>
-        <td>{{i.address}}</td>
-        <td>{{i.gender}}</td>
-        <td>{{i.place}}</td>
-        <td>{{i.course}}</td>
-        <td><a href="editstudprofile/{{i.id}}">EDIT</a></td>
-
-    {% endfor %}
-
-    </tr>
+            <td>{{i.id}}</td>
+            <td>{{i.FirstName}}</td>
+            <td>{{i.LastName}}</td>
+            <td>{{i.age}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.phone}}</td>
+            <td>{{i.address}}</td>
+            <td>{{i.gender}}</td>
+            <td>{{i.place}}</td>
+            <td>{{i.department}}</td>
+        {% endfor %}
+        </tr>
     </table>
-
 </body>
-</html>
