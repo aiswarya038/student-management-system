@@ -46,6 +46,7 @@ button:hover {
 <body>
     <form action="/update/{{a1.id}}" method="POST">
       {% csrf_token %}
+      <h1>EDIT TEACHER PROFILE</h1>
         FIRSTNAME:<input type="text" value="{{a1.FirstName}}" name="fn"><br>
         LASTNAME:<input type="text" value="{{a1.LastName}}" name="ln"><br>
         AGE:<input type="number" value="{{a1.age}}" name="ag"><br>

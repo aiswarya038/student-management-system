@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth import authenticate,login
-from managestudent.models import student,teacher
+from stud.models import student,teacher
 from django.utils.datastructures import MultiValueDictKeyError
 
 
@@ -188,7 +188,7 @@ def teachprofile(request):
     return render(request,"teacherprofile.html",{"a1":profile})
 
 
-def edit_teachprofile(request,eid):
+def edit_teachprofile(request):
     if request.method=='POST':
         f=request.POST['fn']
         l=request.POST['ln']
@@ -204,14 +204,17 @@ def edit_teachprofile(request,eid):
         except MultiValueDictKeyError:
             g='female'
         d=request.POST['dept']
-        x=teacher.objects.filter(id=eid).update(FirstName=f,LastName=l,age=a,email=e,phone=ph,place=pl,address=ad,username=u,password=p,gender=g,department=d)
+        a=request.session['teach_id']
+        x=teacher.objects.filter(id=a).update(FirstName=f,LastName=l,age=a,email=e,phone=ph,place=pl,address=ad,username=u,password=p,gender=g,department=d)
         return redirect(teachprofile)
-    else:
-        a=teacher.objects.get(id=eid)
-        return render(request,"edit_teachprofile.html",{"a1":a})
+    
+def editteachprofile1(request):
+        a=request.session['teach_id']
+        x=teacher.objects.filter(id=a)
+        return render(request,"edit_teachprofile.html",{"a1":x})
     
 def logout(request):
-    return render(request,"login.html")
+    return redirect(login1)
     
 def index(request):
     return render(request,"index.html")

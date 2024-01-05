@@ -1,5 +1,5 @@
 from django.urls import path
-from managestudent import views
+from stud import views
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -21,19 +21,12 @@ urlpatterns = [
     path('del/<int:did>',views.delteacher,name="delteacher"),
     path('update/<int:eid>',views.update_teacher,name="update_teacher"),
     path('teachviewstudent',views.teachviewstudent,name="teachviewstudent"),
-    path('editteachprofile/<int:eid>',views.edit_teachprofile,name="edit_teachprofile"),
+    path('editteachprofile',views.edit_teachprofile,name="edit_teachprofile"),
+    path('editteachprofile1',views.editteachprofile1,name="edit_teachprofile"),
 
-    path('log',views.logout,name="logout"),
+
+    path('logout',views.logout,name="logout"),
+
     path('',views.index,name="index"),
-
-
-
-
-
-
-   
-
-
-
 
 ]

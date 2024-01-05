@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<style>
+    body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    max-width: 600px;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: black;
+    font-weight: bold;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #0066cc;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #004080;
+}
+</style>
+</head>
+<body>
+    <form action="/editstudprofile/{{a1.id}}" method="POST">
+        {% csrf_token %}
+          FIRSTNAME:<input type="text" value="{{a1.FirstName}}" name="fn"><br>
+          LASTNAME:<input type="text" value="{{a1.LastName}}" name="ln"><br>
+          AGE:<input type="number" value="{{a1.age}}" name="ag"><br>
+          EMAIL:<input type="email" value="{{a1.email}}" name="em"><br>
+          ADDRESS:<textarea name="add">{{a1.address}}</textarea><br>
+          PLACE:<input type="text" value="{{a1.place}}" name="pl"><br>
+          PHONE:<input type="tel"  value="{{a1.phone}}" name="ph"><br>
+          GENDER:<input type="radio"name=gender value="male"{% if a1 gender == 'male' %}>male
+                 <input type="radio"name=gender value="female" {% if a1 gender == 'male' %}>female<br>  
+          COURSE:<input type="text"  value="{{a1.course}}" name="co"><br>
+          USERNAME:<input type="text"  value="{{a1.username}}" name="user"><br>
+          PASSWORD:<input type="password"  value="{{a1.password}}" name="pass"><br>
+          <button type="submit">UPDATE</button>
+    </form>
+</body>
+</html>
