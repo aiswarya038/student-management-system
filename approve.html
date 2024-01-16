@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 <style>
-        body {
+    body {
+    background-image: url(https://i.pinimg.com/originals/98/00/93/980093ca4a2b45127c0d8b60577131e1.jpg);
+    background-size: cover;
     font-family: 'Arial', sans-serif;
     background-color: #f4f4f4;
     margin: 0;
@@ -19,6 +21,7 @@ form {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    opacity: 80%;
 }
 
 h1 {
@@ -68,6 +71,7 @@ a:hover {
             <th>GENDER</th>
             <th>PLACE</th>
             <th>COURSE</th>
+            <th>VALUE</th>
         </tr>
         {% for i in a1 %}
         <tr>
@@ -80,6 +84,7 @@ a:hover {
             <td>{{i.gender}}</td>
             <td>{{i.place}}</td>
             <td>{{i.course}}</td>
+            <td>{{i.value}}</td>
             <td><a href="approve/{{i.id}}">APPROVE</a></td>
         {% endfor %}
     

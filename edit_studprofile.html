@@ -32,7 +32,7 @@ textarea {
 }
 
 button {
-    background-color: #0066cc;
+    background-color:green;
     color: #fff;
     padding: 10px 20px;
     border: none;
@@ -41,25 +41,26 @@ button {
 }
 
 button:hover {
-    background-color: #004080;
+    background-color:rgb(22, 77, 22);
 }
 </style>
 </head>
 <body>
     <form action="/editstudprofile/{{a1.id}}" method="POST">
         {% csrf_token %}
-          FIRSTNAME:<input type="text" value="{{a1.FirstName}}" name="fn"><br>
-          LASTNAME:<input type="text" value="{{a1.LastName}}" name="ln"><br>
-          AGE:<input type="number" value="{{a1.age}}" name="ag"><br>
-          EMAIL:<input type="email" value="{{a1.email}}" name="em"><br>
-          ADDRESS:<textarea name="add">{{a1.address}}</textarea><br>
-          PLACE:<input type="text" value="{{a1.place}}" name="pl"><br>
-          PHONE:<input type="tel"  value="{{a1.phone}}" name="ph"><br>
-          GENDER:<input type="radio"name=gender value="male">male
-                 <input type="radio"name=gender value="female">female<br>  
-          COURSE:<input type="text"  value="{{a1.course}}" name="co"><br>
-          USERNAME:<input type="text"  value="{{a1.username}}" name="user"><br>
-          PASSWORD:<input type="password"  value="{{a1.password}}" name="pass"><br>
+        <h1>EDIT YOUR PROFILE</h1>
+          FIRSTNAME<input type="text" value="{{a1.FirstName}}" name="fn"><br>
+          LASTNAME<input type="text" value="{{a1.LastName}}" name="ln"><br>
+          AGE<input type="number" value="{{a1.age}}" name="ag"><br>
+          EMAIL<input type="email" value="{{a1.email}}" name="em"><br>
+          ADDRESS<textarea name="add">{{a1.address}}</textarea><br>
+          PLACE<input type="text" value="{{a1.place}}" name="pl"><br>
+          PHONE<input type="tel"  value="{{a1.phone}}" name="ph"><br>
+          GENDER<input type="radio"name=gender value="male">male
+                 <input type="radio"name=gender value="female">female<br><br>
+          COURSE<input type="text"  value="{{a1.course}}" name="co"><br>
+          USERNAME<input type="text"  value="{{a1.username}}" name="user"><br>
+          PASSWORD<input type="password"  value="{{a1.password}}" name="pass"><br>
           <button type="submit">UPDATE</button>
     </form>
 </body>

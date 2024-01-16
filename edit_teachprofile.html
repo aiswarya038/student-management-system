@@ -18,6 +18,7 @@
         background-color: #fff;
         padding: 20px;
         border-radius: 5px;
+        font-weight: bold;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
     
@@ -35,10 +36,6 @@
         border-radius: 4px;
     }
     
-    input[type="radio"] {
-        margin-right: 5px;
-    }
-    
     button {
         background-color: #4caf50;
         color: #fff;
@@ -54,24 +51,22 @@
 </style>
 </head>
 <body>
-    <form action="/editteachprofile" method="POST">
+    <form action="/editteachprofile/{{a1.id}}" method="POST">
         {% csrf_token %}
-        {% for i in a1 %}
-        <h2>EDIT YPOR PROFILE</h2>
-          FIRSTNAME:<input type="text" value="{{i.FirstName}}" name="fn"><br>
-          LASTNAME:<input type="text" value="{{i.LastName}}" name="ln"><br>
-          AGE:<input type="number" value="{{i.age}}" name="ag"><br>
-          EMAIL:<input type="email" value="{{i.email}}" name="em"><br>
-          ADDRESS:<textarea name="add">{{i.address}}</textarea><br>
-          PLACE:<input type="text" value="{{i.place}}" name="pl"><br>
-          PHONE:<input type="tel"  value="{{i.phone}}" name="ph"><br>
-          GENDER:<input type="radio"name=gender value="male">male
-                 <input type="radio"name=gender value="female">female<br>  
-          DEPARTMENT:<input type="text"  value="{{i.department}}" name="dept"><br>
-          USERNAME:<input type="text"  value="{{i.username}}" name="user"><br>
-          PASSWORD:<input type="password"  value="{{i.password}}" name="pass"><br>
+        <h1>EDIT YOUR PROFILE</h1>
+          FIRSTNAME<input type="text" value="{{a1.FirstName}}" name="fn"><br>
+          LASTNAME<input type="text" value="{{a1.LastName}}" name="ln"><br>
+          AGE<input type="number" value="{{a1.age}}" name="ag"><br>
+          EMAIL<input type="email" value="{{a1.email}}" name="em"><br>
+          ADDRESS<textarea name="add">{{a1.address}}</textarea><br>
+          PLACE<input type="text" value="{{a1.place}}" name="pl"><br>
+          PHONE<input type="tel"  value="{{a1.phone}}" name="ph"><br>
+          GENDER<input type="radio"name=gender value="male">male
+                 <input type="radio"name=gender value="female">female<br>  <br>
+          DEPARTMENT<input type="text"  value="{{a1.department}}" name="dept"><br>
+          USERNAME<input type="text"  value="{{a1.username}}" name="user"><br>
+          PASSWORD<input type="password"  value="{{a1.password}}" name="pass"><br>
           <button type="submit">UPDATE</button>
-          {% endfor %}
     </form>
 </body>
 </html>

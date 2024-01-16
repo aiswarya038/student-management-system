@@ -18,6 +18,7 @@ form {
     background-color: #fff;
     padding: 20px;
     border-radius: 8px;
+    font-weight: bold;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -45,21 +46,20 @@ button:hover {
 </head>
 <body>
     <form action="/update/{{a1.id}}" method="POST">
+        <h1>EDIT TEACHER</h1>
       {% csrf_token %}
-      <h1>EDIT TEACHER PROFILE</h1>
-        FIRSTNAME:<input type="text" value="{{a1.FirstName}}" name="fn"><br>
-        LASTNAME:<input type="text" value="{{a1.LastName}}" name="ln"><br>
-        AGE:<input type="number" value="{{a1.age}}" name="ag"><br>
-        EMAIL:<input type="email" value="{{a1.email}}" name="em"><br>
-        ADDRESS:<textarea name="add">{{i.address}}</textarea><br>
-        PLACE:<input type="text" value="{{a1.place}}" name="pl"><br>
-        PHONE:<input type="tel"  value="{{a1.phone}}" name="ph"><br>
-        GENDER:<input type="radio"name=gender value="male">male
-               <input type="radio"name=gender value="female">female<br>
-
-        DEPARTMENT:<input type="text"  value="{{a1.department}}" name="dept"><br>
-        USERNAME:<input type="text"  value="{{a1.username}}" name="user"><br>
-        PASSWORD:<input type="password"  value="{{a1.password}}" name="pass"><br>
+        FIRSTNAME<input type="text" value="{{a1.FirstName}}" name="fn"><br>
+        LASTNAME<input type="text" value="{{a1.LastName}}" name="ln"><br>
+        AGE<input type="number" value="{{a1.age}}" name="ag"><br>
+        EMAIL<input type="email" value="{{a1.email}}" name="em"><br>
+        ADDRESS<textarea name="add">{{a1.address}}</textarea><br>
+        PLACE<input type="text" value="{{a1.place}}" name="pl"><br>
+        PHONE<input type="tel"  value="{{a1.phone}}" name="ph"><br>
+        GENDER<input type="radio"name=gender value="male">male
+                 <input type="radio"name=gender value="female">female<br>  
+        DEPARTMENT<input type="text"  value="{{a1.department}}" name="dept"><br>
+        USERNAME<input type="text"  value="{{a1.username}}" name="user"><br>
+        PASSWORD<input type="password"  value="{{a1.password}}" name="pass"><br>
         <button type="submit">update</button>
     
     </form>

@@ -1,6 +1,6 @@
 from django.shortcuts import render,redirect,HttpResponse
 from django.contrib.auth import authenticate,login
-from stud.models import student,teacher
+from managestudent.models import student,teacher
 from django.utils.datastructures import MultiValueDictKeyError
 
 
@@ -30,11 +30,12 @@ def login1(request):
             for i in teach:
                 request.session['teach_id']=i.id
                 return render(request,"teacherhome.html")
-        return HttpResponse("invalid username or password")
+        return redirect(alert_view)
     else:
         return render(request,'login.html')
     # return HttpResponse("success")
-        
+
+#student_____________________________________________       
         
 def studreg(request):
     if request.method=='POST':
@@ -51,7 +52,7 @@ def studreg(request):
         p=request.POST['pass']
         x=student.objects.create(FirstName=f,LastName=l,email=e,phone=ph,place=pl,age=a,address=ad,gender=g,course=c,username=u,password=p,value=0,usertype='student')
         x.save()
-        return HttpResponse("registerd")
+        return redirect(alert_success)
     else:      
         return render(request,"studreg.html")
 
@@ -79,8 +80,8 @@ def update_student(request,eid):
             g=request.POST['gender']
         except MultiValueDictKeyError:
             g='female'
-        c=request.POST['co']
-        x=teacher.objects.filter(id=eid).update(FirstName=f,LastName=l,age=a,email=e,phone=ph,place=pl,address=ad,username=u,password=p,gender=g,course=c)
+        co=request.POST['co']
+        x=student.objects.filter(id=eid).update(FirstName=f,LastName=l,age=a,email=e,phone=ph,place=pl,address=ad,username=u,password=p,gender=g,course=co)
         return redirect(studview)
     else:
         a=student.objects.get(id=eid)
@@ -125,7 +126,7 @@ def edit_studprofile(request,eid):
         a=student.objects.get(id=eid)
         return render(request,"edit_studprofile.html",{"a1":a})
 
-
+#teacher__________________________________________________
 
 def teachreg(request):
     if request.method=='POST':
@@ -188,7 +189,7 @@ def teachprofile(request):
     return render(request,"teacherprofile.html",{"a1":profile})
 
 
-def edit_teachprofile(request):
+def edit_teachprofile(request,eid):
     if request.method=='POST':
         f=request.POST['fn']
         l=request.POST['ln']
@@ -204,17 +205,31 @@ def edit_teachprofile(request):
         except MultiValueDictKeyError:
             g='female'
         d=request.POST['dept']
-        a=request.session['teach_id']
-        x=teacher.objects.filter(id=a).update(FirstName=f,LastName=l,age=a,email=e,phone=ph,place=pl,address=ad,username=u,password=p,gender=g,department=d)
+        x=teacher.objects.filter(id=eid).update(FirstName=f,LastName=l,age=a,email=e,phone=ph,place=pl,address=ad,username=u,password=p,gender=g, department=d)
         return redirect(teachprofile)
-    
-def editteachprofile1(request):
-        a=request.session['teach_id']
-        x=teacher.objects.filter(id=a)
-        return render(request,"edit_teachprofile.html",{"a1":x})
+    else:
+        a=teacher.objects.get(id=eid)
+        return render(request,"edit_teachprofile.html",{"a1":a})
     
 def logout(request):
     return redirect(login1)
     
 def index(request):
     return render(request,"index.html")
+
+
+def alert_view(request):
+    response_content = """
+        <script>
+            alert("invalid username or password");
+        </script>
+    """
+    return HttpResponse(response_content)
+
+def alert_success(request):
+    response_content = """
+        <script>
+            alert("successfully registerd");
+        </script>
+    """
+    return HttpResponse(response_content)

@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            background-color: #4ea352;
             margin: 0;
             padding: 0;
             display: flex;
@@ -22,6 +22,7 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
         }
 
         h1 {
@@ -51,9 +52,9 @@
             background-color: #45a049;
         }
 
-        /* input[type="radio"] {
+        input[type="radio"] {
             margin-right: 5px;
-        } */
+        }
     </style>
 </head>
 <body>
@@ -62,11 +63,11 @@
         <h2>TEACHER REGISTRAION FORM</h2>
         FIRSTNAME:<input type="text" name="fn"><br>
         LASTNAME:<input type="text" name="ln"><br>
-        AGE:<input type="number" name="ag"><br>
+        AGE:<input type="number" name="ag" min="10"><br>
         EMAIL:<input type="email" name="em"><br>
         ADDRESS:<textarea name="add"></textarea><br>
         PLACE:<input type="text" name="pl"><br>
-        PHONE:<input type="tel" name="ph"><br>
+        PHONE:<input type="tel" name="ph" maxlength="10"><br>
         GENDER:<input type="radio"name=gender value="male">male
                <input type="radio"name=gender value="female">female<br><br>
         DEPARTMENT:<input type="text" name="dept"><br>
